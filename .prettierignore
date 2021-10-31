@@ -1,0 +1,6 @@
+# Ignore artifacts:
+app
+dist
+.next
+node_modules
+*.json
