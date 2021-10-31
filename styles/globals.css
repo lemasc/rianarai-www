@@ -34,7 +34,7 @@ input[type="checkbox"] {
 }
 
 .list-check li {
-  @apply py-2;
+  @apply py-1 sm:py-2;
 }
 .list-check li:before {
   content: '✓';

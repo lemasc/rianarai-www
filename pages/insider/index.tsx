@@ -88,7 +88,7 @@ export default function InsiderLandingPage() {
             <Link href="/insider/join">
               <a
                 title="เข้าร่วม RianArai Insider Community"
-                className="px-4 py-2 rounded-lg hover:bg-gray-800 bg-black text-white focus:outline-none focus:ring-2 ring-black focus:ring-offset-4 ring-offset-white"
+                className="text-center px-4 py-2 rounded-lg hover:bg-gray-800 bg-black text-white focus:outline-none focus:ring-2 ring-black focus:ring-offset-4 ring-offset-white"
               >
                 เข้าร่วม RianArai Insider Community{" "}
                 <ArrowRightIcon className="-mt-0.5 inline h-5 w-5" />

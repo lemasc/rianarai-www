@@ -1,6 +1,6 @@
 export default function JoinTerms() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-4 sm:gap-8">
       <h1 className="font-bold text-3xl">เงื่อนไขการเข้าร่วมโปรแกรม RianArai Insider</h1>
       <ol className="list-outside list-check leading-8">
         <li>เป็นศิษย์ปัจจุบันของโรงเรียนมัธยมสาธิตวัดพระศรีมหาธาตุ มหาวิทยาลัยราชภัฎพระนคร</li>

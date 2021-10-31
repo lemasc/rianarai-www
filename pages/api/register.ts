@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest } from "next";
 import axios from "axios";
 import { nanoid } from "nanoid";
 import { getClientIp } from "@supercharge/request-ip";
