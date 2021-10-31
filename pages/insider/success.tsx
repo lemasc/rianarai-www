@@ -37,20 +37,20 @@ export default function InsiderSuccess({ code }: { code: string }) {
       </Head>
       <Menubar />
       <Container>
-        <div className="flex flex-col gap-8 items-center">
+        <div className="flex flex-col gap-8 items-center text-center">
           <h1 className="font-bold text-3xl">เข้าร่วมโปรแกรมเรียบร้อยแล้ว!</h1>
           <span>
             เหลือขั้นตอนสุดท้ายในการเข้าสู่โปรแกรม RianArai Insider ให้เข้าสู่กลุ่ม LINE OpenChat
             โดยใช้รหัสดังต่อไปนี้
           </span>
-          <div className="grid grid-cols-2 divide-x items-center">
-            <div className="flex flex-col gap-6 text-center p-16">
+          <div className="flex flex-col md:grid grid-cols-2 md:divide-x items-center">
+            <div className="flex flex-col gap-6 text-center p-10 md:p-16 border-t md:border-t-0">
               <span className="font-bold text-xl">รหัสการเข้าร่วมของคุณ:</span>
-              <div className="select-all font-mono text-2xl bg-gray-100 rounded p-4 font-bold border shadow-lg">
+              <div className="select-all font-mono text-2xl bg-gray-100 rounded p-4 border shadow-lg">
                 {code}
               </div>
               <span className="text-red-500 font-medium">
-                สำคัญ! รหัสจะถูกแสดงครั้งเดียวเท่านั้น หากรหัสนี้สูญหาย
+                รหัสจะถูกแสดงครั้งเดียวเท่านั้น หากรหัสนี้สูญหาย
                 คุณจำเป็นจะต้องกรอกแบบฟอร์มเข้าร่วมใหม่อีกครั้ง
               </span>
             </div>
@@ -68,7 +68,7 @@ export default function InsiderSuccess({ code }: { code: string }) {
                 href={process.env.NEXT_PUBLIC_GROUP_LINK + "&utm_medium=link_copy"}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="px-4 py-2 rounded bg-line-500 text-white flex items-center justify-center roboto-font"
+                className="px-12 py-2 rounded bg-line-500 hover:bg-line-600 text-white flex items-center justify-center roboto-font"
               >
                 <FontAwesomeIcon icon={faLine} size="2x" className="mr-3" /> Open In LINE
               </a>

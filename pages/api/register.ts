@@ -1,6 +1,7 @@
 import { NextApiRequest } from "next";
 import axios from "axios";
-import { nanoid } from "nanoid";
+// Netlify imports only non-secure apis for no reason.
+import { nanoid } from "nanoid/non-secure";
 import { getClientIp } from "@supercharge/request-ip";
 import Ajv, { JSONSchemaType } from "ajv";
 import { InsiderResponse, InsiderFrontEndForm } from "@/types/insider";
@@ -38,13 +39,13 @@ const validate = ajv.compile(schema);
 
 async function verifyRecaptcha(req: NextApiRequest) {
   try {
-    const token = req.headers["Authorization"];
+    const token = req.headers.authorization;
     if (!token) return false;
     const response = await axios.post(
       "https://www.google.com/recaptcha/api/siteverify",
       new URLSearchParams({
         secret: process.env.RECAPTCHA as string,
-        response: token as string,
+        response: token.split(" ")[1] as string,
         remoteip: getClientIp(req) as string,
       })
     );
@@ -58,7 +59,7 @@ const register: APIHandler<InsiderResponse> = async (req, res) => {
   try {
     if (
       req.method !== "POST" ||
-      !verifyRecaptcha(req) ||
+      !(await verifyRecaptcha(req)) ||
       !validate(req.body) ||
       !(req.body.confirm && req.body.confirmRights)
     )

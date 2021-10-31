@@ -62,8 +62,10 @@ export default function InsiderJoinPage() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
             className="flex flex-col gap-8"
+            beforeEnter={() => window.scrollTo(0, 0)}
             afterLeave={() => {
               if (memory !== undefined) setForm(memory);
+              window.scrollTo(0, 0);
               setMemory(undefined);
             }}
           >
@@ -88,6 +90,7 @@ export default function InsiderJoinPage() {
             className="bg-white sm:-my-6 p-8 sm:p-12 border rounded-lg shadow-lg"
             afterLeave={() => {
               if (memory !== undefined) setForm(memory);
+              window.scrollTo(0, 0);
               setMemory(undefined);
               reset();
               setTouched(false);
