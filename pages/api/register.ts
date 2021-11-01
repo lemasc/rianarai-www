@@ -1,7 +1,6 @@
 import { NextApiRequest } from "next";
 import axios from "axios";
-// Netlify imports only non-secure apis for no reason.
-import { nanoid } from "nanoid/non-secure";
+import { nanoid } from "@/shared/nanoid";
 import { getClientIp } from "@supercharge/request-ip";
 import Ajv, { JSONSchemaType } from "ajv";
 import { InsiderResponse, InsiderFrontEndForm } from "@/types/insider";
