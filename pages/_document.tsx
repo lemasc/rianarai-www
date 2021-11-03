@@ -16,6 +16,21 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <meta name="theme-color" content="#000000"></meta>
+          <meta property="og:image" content="https://rianarai.netlify.app/insider_card.jpg" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="title" content="RianArai 3.0 - Insider Program" />
+          <meta
+            name="description"
+            content="ทดลองใช้งาน RianArai 3.0 ที่จะเปลี่ยนรูปแบบการเรียนออนไลน์ให้ดีขึ้นกว่าที่เคย"
+          />
+          <meta property="og:url" content="https://rianarai.netlify.app" />
+          <meta property="og:title" content="RianArai 3.0 - Insider Program" />
+          <meta
+            property="og:description"
+            content="ทดลองใช้งาน RianArai 3.0 ที่จะเปลี่ยนรูปแบบการเรียนออนไลน์ให้ดีขึ้นกว่าที่เคย"
+          />
         </Head>
         <body>
           <Main />

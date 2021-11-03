@@ -61,7 +61,7 @@ export default function InsiderSuccess({ code }: { code: string }) {
               </div>
               <QRCode
                 size={192}
-                value={process.env.NEXT_PUBLIC_GROUP_LINK + "&utm_medium=link_copy"}
+                value={process.env.NEXT_PUBLIC_GROUP_LINK + "&utm_medium=QR_code"}
               />
 
               <a
