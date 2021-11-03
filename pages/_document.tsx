@@ -16,7 +16,7 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <meta name="theme-color" content="#000000"></meta>
-          <meta property="og:image" content="https://rianarai.netlify.app/insider_card.jpg" />
+          <meta property="og:image" content="https://rianarai.netlify.app/insider_card.png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
           <meta name="twitter:card" content="summary_large_image" />
