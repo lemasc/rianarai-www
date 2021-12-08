@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import { Menubar, Container, Footer } from "@/components/layout";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { readFile, readdir } from "fs/promises";
+import { readFile, readdir, readdirSync, readFileSync } from "fs";
 import MarkDownComponent from "@/components/markdown";
 import path from "path";
 
@@ -15,18 +15,16 @@ type StaticContentParams = {
 
 const docsPath = path.join(process.cwd(), "docs");
 
-export const getStaticPaths: GetStaticPaths<StaticPathParams> = async () => {
-  const paths = (await readdir(docsPath)).map((c) => ({ params: { name: c.replace(".md", "") } }));
+export const getStaticPaths: GetStaticPaths<StaticPathParams> = () => {
+  const paths = readdirSync(docsPath).map((c) => ({ params: { name: c.replace(".md", "") } }));
   return {
     paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<StaticContentParams, StaticPathParams> = async (
-  context
-) => {
-  const content = await readFile(docsPath + `/${context.params?.name}.md`, {
+export const getStaticProps: GetStaticProps<StaticContentParams, StaticPathParams> = (context) => {
+  const content = readFileSync(docsPath + `/${context.params?.name}.md`, {
     encoding: "utf-8",
   });
   if (!content) {
