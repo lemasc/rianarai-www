@@ -81,7 +81,7 @@ export default function InsiderLandingPage() {
             <h2 className="text-xl font-medium">กำหนดการเปิดใช้งานเวอร์ชั่น Beta</h2>
             <ul className="list-disc list-inside">
               <li>PC - 2 พ.ย. 64</li>
-              <li>Android และ iOS - ภายในกลางเดือน พ.ย. 64</li>
+              <li>Android และ iOS - ภายในกลางเดือน ธ.ค. 64</li>
             </ul>
           </div>
           <div className="flex flex-col flex-shrink-0 lg:items-end justify-center">

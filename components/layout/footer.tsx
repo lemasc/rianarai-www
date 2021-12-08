@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -12,6 +13,11 @@ export default function Footer() {
         <a target="_blank" rel="noreferrer" href="https://twitter.com/lemascth">
           <FontAwesomeIcon icon={faTwitter} size="2x" className="opacity-50 hover:opacity-100" />
         </a>
+      </div>
+      <div className="flex flex-row gap-8 text-sm text-gray-500">
+        <Link href="/docs/privacy">
+          <a className="underline">นโยบายความเป็นส่วนตัว</a>
+        </Link>
       </div>
     </div>
   );
