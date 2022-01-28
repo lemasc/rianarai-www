@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import TypewriterComponent from "typewriter-effect";
-import { Brand, Container, Footer } from "@/components/layout";
+import { Brand, BrandWithLogo, Container, Footer } from "@/components/layout";
 import { ArrowRightIcon } from "@heroicons/react/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindows, faAndroid, faApple } from "@fortawesome/free-brands-svg-icons";
@@ -64,10 +64,7 @@ export default function InsiderLandingPage() {
             </p>
           </div>
           <div className="flex flex-col flex-shrink-0 lg:items-end justify-center">
-            <div className="flex flex-row items-center gap-4">
-              <Image draggable={false} src="/logo.svg" width={50} height={50} alt="logo" />
-              <Brand className="text-3xl" />
-            </div>
+            <BrandWithLogo className="text-3xl" />
           </div>
         </div>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 bg-gray-100 rounded-lg px-6 py-10 xl:m-6">

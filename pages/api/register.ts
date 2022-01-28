@@ -1,10 +1,10 @@
-import { NextApiRequest } from "next";
+import { NextApiHandler, NextApiRequest } from "next";
 import axios from "axios";
 import { nanoid } from "@/shared/nanoid";
 import { getClientIp } from "@supercharge/request-ip";
 import Ajv, { JSONSchemaType } from "ajv";
-import { InsiderResponse, InsiderFrontEndForm } from "@/types/insider";
-import { APIHandler, withAPISession } from "@/shared/session";
+import { InsiderResponse, InsiderFrontEndForm, InsiderBackEndForm } from "@/types/insider";
+import { withAPISession } from "@/shared/session";
 
 type ApiResponse = {
   errors: Record<string, any>;
@@ -54,7 +54,7 @@ async function verifyRecaptcha(req: NextApiRequest) {
   }
 }
 
-const register: APIHandler<InsiderResponse> = async (req, res) => {
+const register: NextApiHandler<InsiderResponse> = async (req, res) => {
   try {
     if (
       req.method !== "POST" ||
@@ -65,7 +65,7 @@ const register: APIHandler<InsiderResponse> = async (req, res) => {
       return res.status(400).json({ success: false });
     const id = nanoid(7);
 
-    const postData = {
+    const postData: Partial<InsiderBackEndForm> = {
       "#": id,
       date: new Date().toISOString(),
       name: req.body.name,
@@ -82,7 +82,7 @@ const register: APIHandler<InsiderResponse> = async (req, res) => {
     });
     if (Object.keys(data.errors).length > 0) throw new Error("API returned an error.");
 
-    req.session.set("code", id);
+    req.session.code = id;
     await req.session.save();
 
     return res.status(200).json({ success: true });

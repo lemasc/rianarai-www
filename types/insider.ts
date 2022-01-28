@@ -9,6 +9,15 @@ export type InsiderForm = {
   };
 };
 
+export type InsiderBackEndForm = Omit<InsiderForm, "devices"> & {
+  "#": string;
+  date: string;
+  devices_windows: boolean;
+  devices_android: boolean;
+  devices_ios: boolean;
+  joined: string;
+};
+
 export type InsiderFrontEndForm = InsiderForm & {
   confirm: boolean;
   confirmRights: boolean;
