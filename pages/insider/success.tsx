@@ -11,7 +11,7 @@ const QRCode = dynamic(() => import("react-qr-code"), {
 });
 
 export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
-  const code: string | undefined = context.req.session.get("code");
+  const code: string | undefined = context.req.session.code;
   if (!code) {
     return {
       redirect: {

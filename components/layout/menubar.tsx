@@ -1,4 +1,4 @@
-import Brand from "./brand";
+import { Brand } from "./brand";
 import Link from "next/link";
 export default function Menubar() {
   return (
