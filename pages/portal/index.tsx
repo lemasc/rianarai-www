@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindows, faAndroid, faApple } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
   if (!context.req.session.portal?.user) {
@@ -57,6 +58,14 @@ const devices: Devices[] = [
 ];
 export default function PortalApp({ user }: { user: InsiderBackEndForm }) {
   const router = useRouter();
+  useEffect(() => {
+    if (Object.keys(router.query).length !== 0) {
+      // Netlify exposes the auth code??? How bad.
+      router.replace("/portal", undefined, {
+        shallow: true,
+      });
+    }
+  }, [router.query]);
   return (
     <div className="flex flex-col items-center justify-center h-full min-h-screen bg-gray-50 w-full">
       <Head>
@@ -79,7 +88,7 @@ export default function PortalApp({ user }: { user: InsiderBackEndForm }) {
                 d.enabled ? "bg-gray-200 hover:bg-gray-300" : "opacity-50 hover:cursor-not-allowed"
               } p-4`}
               style={{ minWidth: "120px" }}
-              onClick={() => router.push("/portal/access/" + d.code)}
+              onClick={() => d.enabled && router.push("/portal/access/" + d.code)}
             >
               <FontAwesomeIcon icon={d.icon} size="3x" />
               <span>{d.name}</span>

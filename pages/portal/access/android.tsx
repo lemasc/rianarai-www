@@ -50,7 +50,10 @@ export default function PortalApp({ user }: { user: InsiderBackEndForm }) {
               </div>
             </li>
             <li>
-              <div className="content-sublist">เลือกบัญชีในการดาวน์โหลดเป็นบัญชี PNRU</div>
+              <div className="content-sublist">
+                <strong className="text-red-500">หากขึ้นหน้าจอว่าไม่สามารถเข้าร่วมได้</strong>{" "}
+                ให้กดที่ปุ่มมุมขวาบนเพื่อเปลี่ยนบัญชีในการดาวน์โหลดเป็นบัญชี PNRU
+              </div>
             </li>
             <li>
               <div className="content-sublist">
