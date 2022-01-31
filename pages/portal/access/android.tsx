@@ -1,25 +1,10 @@
 import { BrandWithLogo } from "@/components/layout";
-import { withSession } from "@/shared/session";
+import { portalAuthGaurd } from "@/shared/insider";
 import { InsiderBackEndForm } from "@/types/insider";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 
-export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
-  if (!context.req.session.portal?.user) {
-    return {
-      redirect: {
-        destination: "/portal/signin",
-        permanent: true,
-      },
-    };
-  }
-  return {
-    props: {
-      user: context.req.session.portal.user,
-    },
-  };
-});
+export const getServerSideProps = portalAuthGaurd;
 
 export default function PortalApp({ user }: { user: InsiderBackEndForm }) {
   return (

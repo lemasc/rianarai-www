@@ -1,29 +1,13 @@
 import { BrandWithLogo } from "@/components/layout";
-import { withSession } from "@/shared/session";
 import { InsiderBackEndForm } from "@/types/insider";
-import { GetServerSideProps } from "next";
 import Head from "next/head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWindows, faAndroid, faApple } from "@fortawesome/free-brands-svg-icons";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { portalAuthGaurd } from "@/shared/insider";
 
-export const getServerSideProps: GetServerSideProps = withSession(async (context) => {
-  if (!context.req.session.portal?.user) {
-    return {
-      redirect: {
-        destination: "/portal/signin",
-        permanent: true,
-      },
-    };
-  }
-  return {
-    props: {
-      user: context.req.session.portal.user,
-    },
-  };
-});
+export const getServerSideProps = portalAuthGaurd;
 
 type Devices = {
   key: keyof InsiderBackEndForm;
@@ -38,7 +22,7 @@ const devices: Devices[] = [
     key: "devices_windows",
     icon: faWindows,
     name: "Windows",
-    enabled: false,
+    enabled: true,
     code: "windows",
   },
   {
@@ -95,11 +79,12 @@ export default function PortalApp({ user }: { user: InsiderBackEndForm }) {
             </button>
           ))}
         </div>
-        <Link href="/api/portal/signout">
-          <a className="text-blue-600 hover:text-blue-800 underline text-sm">
-            ออกจากระบบ RianArai Portal
-          </a>
-        </Link>
+        <a
+          href={"/api/portal/signout"}
+          className="text-blue-600 hover:text-blue-800 underline text-sm"
+        >
+          ออกจากระบบ RianArai Portal
+        </a>
       </div>
     </div>
   );
