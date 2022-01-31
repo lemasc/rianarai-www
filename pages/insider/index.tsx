@@ -2,37 +2,81 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import TypewriterComponent from "typewriter-effect";
-import { Brand, BrandWithLogo, Container, Footer } from "@/components/layout";
+import { BrandWithLogo, Container, Footer } from "@/components/layout";
 import { ArrowRightIcon } from "@heroicons/react/outline";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindows, faAndroid, faApple } from "@fortawesome/free-brands-svg-icons";
+import { useEffect, useRef, useState } from "react";
 
+type StoreImage = {
+  id: string;
+  title: string;
+};
+
+const images: StoreImage[] = [
+  {
+    id: "google-play",
+    title: "Get it on Google Play",
+  },
+  {
+    id: "testflight",
+    title: "Available on Apple TestFlight",
+  },
+  {
+    id: "windows",
+    title: "Download on Windows",
+  },
+];
+
+function VideoOrImageBg() {
+  const videoRef = useRef<HTMLVideoElement | null>();
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.src = "/hero/hero.mp4";
+    }
+  }, []);
+  return (
+    <video
+      className="w-full h-full object-cover"
+      poster="/hero/hero.jpg"
+      ref={(ref) => (videoRef.current = ref)}
+      id="hero-bg"
+      autoPlay
+      muted
+      loop
+      playsInline
+    ></video>
+  );
+}
 export default function InsiderLandingPage() {
   return (
     <>
       <Head>
         <title>RianArai Insider Community</title>
       </Head>
-      <div className="w-full select-none p-12 sm:p-16 flex flex-col bg-black text-white justify-center items-center gap-10">
-        <div className="flex flex-col items-center gap-4 text-center">
-          <Brand landing className="text-5xl" />
-          <span className="sm:text-lg font-mono uppercase font-bold select-none">
-            Insider Release
+      <div className="w-full relative select-none text-center">
+        <VideoOrImageBg />
+        <div className="absolute inset-0 bg-gray-800 opacity-50 z-10"></div>
+        <div className="p-12 sm:p-16 absolute inset-0 z-20 flex flex-col text-white gap-8 w-full items-center justify-center ">
+          <div className="flex flex-col items-center gap-6 text-center">
+            <BrandWithLogo landing className="text-5xl" imageSize={65} />
+            <span className="sm:text-md select-none opacity-75">
+              เครื่องมือเดียวสำหรับการเรียนออนไลน์และออนไซต์
+            </span>
+          </div>
+          <span className="text-xl">
+            พร้อมใช้งานแล้วในทุกแพลตฟอร์ม ผ่านโปรแกรม RianArai Insider
           </span>
-        </div>
-        <div className="flex flex-row justify-center flex-wrap sm:grid grid-cols-3 gap-8 font-mono uppercase sm:py-4">
-          <div className="flex flex-col gap-4 items-center">
-            <FontAwesomeIcon icon={faWindows} size="3x" />
-            <span>2 Nov 21</span>
-          </div>
-
-          <div className="flex flex-col gap-4 items-center">
-            <FontAwesomeIcon icon={faAndroid} size="3x" />
-            <span className="opacity-50">Coming Soon</span>
-          </div>
-          <div className="flex flex-col gap-4 items-center">
-            <FontAwesomeIcon icon={faApple} size="3x" />
-            <span className="opacity-50">Coming Soon</span>
+          <div className="flex flex-row gap-6 flex-wrap items-center justify-center">
+            {images.map((i) => (
+              <Image
+                key={i.title}
+                draggable={false}
+                src={`/store-badges/${i.id}.png`}
+                height={80}
+                width={207}
+                alt={i.title}
+                title={i.title}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -75,11 +119,11 @@ export default function InsiderLandingPage() {
               วันนี้เพื่อรับสิทธิการดาวน์โหลดแอพพลิเคชั่นเบต้า แจ้งปัญหาและข้อเสนอแนะต่าง ๆ
               เพื่อทำให้ RianArai เป็นตัวช่วยในการเรียนของทุก ๆ คน
             </p>
-            <h2 className="text-xl font-medium">กำหนดการเปิดใช้งานเวอร์ชั่น Beta</h2>
-            <ul className="list-disc list-inside">
-              <li>PC - 2 พ.ย. 64</li>
-              <li>Android และ iOS - ภายในกลางเดือน ธ.ค. 64</li>
-            </ul>
+            <p>
+              RianArai รองรับการใช้งานจากทั้ง 3 แพลตฟอร์ม Windows, Android และ iOS
+              <br />
+              ขั้นตอนทั้งหมดใช้เวลาไม่เกิน 10 นาทีก็สามารถเริ่มต้นได้ทันที{" "}
+            </p>
           </div>
           <div className="flex flex-col flex-shrink-0 lg:items-end justify-center">
             <Link href="/insider/join">

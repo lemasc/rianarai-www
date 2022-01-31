@@ -11,10 +11,16 @@ export function Brand({ className, landing }: BrandProps) {
   );
 }
 
-export function BrandWithLogo(props: BrandProps) {
+export function BrandWithLogo({ imageSize, ...props }: BrandProps & { imageSize?: number }) {
   return (
     <div className="flex flex-row items-center gap-4">
-      <Image draggable={false} src="/logo.svg" width={50} height={50} alt="logo" />
+      <Image
+        draggable={false}
+        src={props.landing ? "/logo_white.svg" : "/logo.svg"}
+        width={imageSize ?? 50}
+        height={imageSize ?? 50}
+        alt="logo"
+      />
       <Brand {...props} />
     </div>
   );
