@@ -75,6 +75,9 @@ export default function InsiderLandingPage() {
                 width={207}
                 alt={i.title}
                 title={i.title}
+                onClick={() => {
+                  document.getElementById("join-box")?.scrollIntoView({ behavior: "smooth" });
+                }}
               />
             ))}
           </div>
@@ -111,7 +114,10 @@ export default function InsiderLandingPage() {
             <BrandWithLogo className="text-3xl" />
           </div>
         </div>
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8 bg-gray-100 rounded-lg px-6 py-10 xl:m-6">
+        <div
+          id="join-box"
+          className="flex flex-col lg:flex-row gap-4 lg:gap-8 bg-gray-100 rounded-lg px-6 py-10 xl:m-6"
+        >
           <div className="flex flex-col gap-4 p-4 flex-grow leading-7">
             <h1 className="font-bold text-3xl">ทดลองใช้งาน RianArai 3.0</h1>
             <p>
